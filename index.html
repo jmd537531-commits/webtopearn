@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHOPX CASH BD</title>
+<style>
+:root{--green:#05b99a;--deep:#079b83;--bg:#eef2f8;--ink:#172033;--muted:#758094;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;color:var(--ink);padding-bottom:88px}
+header{background:var(--green);color:white;border-radius:0 0 34px 34px;padding:18px 18px 28px;box-shadow:0 8px 24px #08aa9225}
+.top{display:flex;align-items:center;justify-content:space-between}.brand{font-size:21px;font-weight:850;letter-spacing:.3px}.circle{border:0;border-radius:16px;background:#ffffff28;color:white;width:48px;height:48px;font-size:23px}
+.welcome{display:flex;align-items:center;gap:12px;margin-top:20px}.avatar{width:58px;height:58px;border-radius:50%;background:#d7fff5;color:#087c6b;display:grid;place-items:center;font-size:25px;font-weight:800;border:3px solid #ffffff55}.welcome small{opacity:.85}.welcome strong{display:block;font-size:20px}.balance{margin-left:auto;background:#078d79;border-radius:22px;padding:12px 15px;font-weight:800;white-space:nowrap}
+main{max-width:760px;margin:22px auto;padding:0 16px}.panel{background:white;border-radius:30px;padding:20px;margin-bottom:18px;box-shadow:0 8px 25px #24304b0b}.panel h2{font-size:19px;margin:0 0 16px}.live{float:right;color:#139b64;background:#e6f8ef;border-radius:30px;padding:5px 13px;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.stat{background:#f8fafc;border:1px solid #edf0f5;border-radius:20px;text-align:center;padding:13px 4px}.stat b{font-size:26px;display:block}.stat span{font-size:13px;color:var(--muted)}
+.notice{display:flex;align-items:center;gap:12px;min-height:72px}.notice b{background:#2767df;color:#fff;padding:7px 18px;border-radius:24px;box-shadow:0 0 0 5px #d4f5ec}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px}.service{border:0;background:transparent;text-align:center;color:inherit;font:inherit;cursor:pointer}.ico{width:68px;height:68px;margin:auto auto 7px;background:#f1f5fa;border-radius:23px;display:grid;place-items:center;font-size:30px}.service span:last-child{font-size:14px;font-weight:650}
+.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(12px);border-radius:28px 28px 0 0;box-shadow:0 -5px 25px #24304b12;display:flex;justify-content:space-around;padding:9px 5px max(10px,env(safe-area-inset-bottom))}
+.bottom button{border:0;background:none;color:#657080;font-weight:650;font-size:12px;display:grid;gap:4px;justify-items:center}.bottom i{font-style:normal;font-size:23px}.bottom .active{color:#078fdb}
+button,.btn{cursor:pointer}.btn{border:0;background:var(--green);color:white;padding:12px 18px;border-radius:14px;font-weight:750}.btn.secondary{background:#eaf8f5;color:#078a75}.btn.danger{background:#ffecee;color:#c43e4b}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:14px;font-weight:700}.field input,.field select,.field textarea{width:100%;padding:13px;border:1px solid #e0e6ee;border-radius:13px;font:inherit;background:#fbfcfe}.field textarea{min-height:90px;resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.hidden{display:none!important}.muted{color:var(--muted);font-size:13px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.pill{font-size:12px;padding:5px 10px;border-radius:30px;background:#fff3d9;color:#9b6b00}.item{border:1px solid #edf0f5;border-radius:16px;padding:13px;margin:10px 0}
+.modal{position:fixed;inset:0;background:#10182788;display:grid;place-items:center;padding:18px;z-index:10}.modalbox{width:min(440px,100%);background:white;border-radius:24px;padding:22px;max-height:90vh;overflow:auto}
+@media(max-width:430px){.stats{gap:6px}.stat b{font-size:22px}.services{gap:15px 5px}.ico{width:60px;height:60px}.brand{font-size:18px}.balance{font-size:13px;padding:10px}}
+</style></head>
+<body>
+<header><div class="top"><button class="circle" onclick="toggleMenu()">☰</button><div class="brand">SHOPX CASH BD</div><button class="circle" onclick="notice()">♧</button></div>
+<div class="welcome"><div class="avatar" id="avatar">S</div><div><small>WELCOME BACK,</small><strong id="welcomeName">GUEST USER</strong></div><div class="balance">▣ ৳<span id="balance">0.00</span></div></div></header>
+<main>
+<section id="homeView">
+<div class="panel"><h2>◷ সাইটের বয়স <span class="live">● Live</span></h2><div class="stats"><div class="stat"><b>00</b><span>দিন</span></div><div class="stat"><b>00</b><span>ঘণ্টা</span></div><div class="stat"><b id="mins">00</b><span>মিনিট</span></div><div class="stat"><b id="secs">00</b><span>সেকেন্ড</span></div></div></div>
+<div class="panel notice"><b>Notice</b><span id="noticeText" class="muted">স্বাগতম! বৈধ ডিজিটাল পণ্য ও অনুমোদিত সেবার আবেদন করুন।</span></div>
+<div class="panel"><h2>♧ আমাদের প্রজেক্ট সমূহ</h2><div class="services">
+<button class="service" onclick="openSell('Facebook Page Management')"><span class="ico">f</span><span>পেজ সার্ভিস</span></button>
+<button class="service" onclick="openSell('Google Workspace Service')"><span class="ico">✉️</span><span>Google Workspace</span></button>
+<button class="service" onclick="openSell('Instagram Management')"><span class="ico">◎</span><span>ইনস্টা সার্ভিস</span></button>
+<button class="service" onclick="showView('tasksView')"><span class="ico">☷</span><span>টাস্ক</span></button>
+<button class="service" onclick="openSell('Micro Job Service')"><span class="ico">▣</span><span>মাইক্রো জব</span></button>
+<button class="service" onclick="showView('spinView')"><span class="ico">✥</span><span>স্পিন</span></button>
+<button class="service" onclick="showView('tasksView')"><span class="ico">⌨</span><span>টাস্কিং জব</span></button>
+<button class="service" onclick="showView('walletView')"><span class="ico">▤</span><span>আয় দেখুন</span></button>
+<button class="service" onclick="showView('giftView')"><span class="ico">🎁</span><span>গিফট কোড</span></button>
+<button class="service" onclick="showView('walletView')"><span class="ico">▱</span><span>ওয়ালেট</span></button>
+<button class="service" onclick="showView('profileView')"><span class="ico">♛</span><span>মেম্বারশিপ</span></button>
+<button class="service" onclick="showView('tasksView')"><span class="ico">◎</span><span>টার্গেট বোনাস</span></button>
+</div></div>
+</section>
+<section id="profileView" class="panel hidden"><h2>আমার প্রোফাইল</h2><div id="profileInfo" class="muted">লগইন করলে আপনার তথ্য এখানে দেখা যাবে।</div><div class="actions" style="margin-top:15px"><button class="btn" onclick="auth('login')">লগইন</button><button class="btn secondary" onclick="auth('register')">রেজিস্ট্রেশন</button><button class="btn danger hidden" id="logoutBtn" onclick="logout()">লগআউট</button></div></section>
+<section id="sellView" class="panel hidden"><div class="row"><h2>সার্ভিস/পণ্য জমা দিন</h2><button class="btn secondary" onclick="showView('homeView')">ফিরে যান</button></div><p class="muted">শুধু আপনার মালিকানাধীন বা বিক্রির অনুমতি আছে এমন বৈধ ডিজিটাল পণ্য/সেবা জমা দিন। Gmail পাসওয়ার্ড, OTP বা recovery code দেবেন না।</p><form id="sellForm"><div class="field"><label>সার্ভিসের ধরন</label><input id="serviceType" readonly></div><div class="field"><label>আপনার প্রস্তাবিত মূল্য (৳)</label><input id="price" type="number" min="1" required placeholder="যেমন ২০০"></div><div class="field"><label>বিস্তারিত / পোর্টফোলিও লিংক</label><textarea id="details" required placeholder="সার্ভিসের বিবরণ লিখুন"></textarea></div><div class="field"><label>যোগাযোগের ইমেইল</label><input id="contact" type="email" required placeholder="name@example.com"></div><button class="btn" type="submit">আবেদন জমা দিন</button></form></section>
+<section id="tasksView" class="panel hidden"><h2>আমার আবেদনসমূহ</h2><div id="mySubmissions" class="muted">লগইন করে আবেদন জমা দিন।</div></section>
+<section id="walletView" class="panel hidden"><h2>ওয়ালেট</h2><p>বর্তমান ব্যালেন্স: <b>৳<span id="walletBalance">0.00</span></b></p><p class="muted">অনুমোদিত আবেদন ও যাচাইকৃত পেমেন্টের পর ব্যালেন্স আপডেট হবে।</p></section>
+<section id="spinView" class="panel hidden"><h2>স্পিন</h2><p class="muted">ডেমো সাইটে স্পিন/রিওয়ার্ড চালু নেই।</p></section><section id="giftView" class="panel hidden"><h2>গিফট কোড</h2><p class="muted">বর্তমানে কোনো গিফট কোড নেই।</p></section>
+</main>
+<nav class="bottom"><button onclick="showView('homeView')" class="active"><i>⌂</i>HOME</button><button onclick="showView('walletView')"><i>▤</i>Wallet</button><button onclick="showView('homeView')"><i style="font-size:28px">⌂</i>HOME</button><button onclick="showView('tasksView')"><i>♧</i>Team</button><button onclick="showView('profileView')"><i>♙</i>Profile</button></nav>
+<div id="modal" class="modal hidden"><div class="modalbox"><div class="row"><h2 id="modalTitle">লগইন</h2><button class="btn secondary" onclick="closeModal()">✕</button></div><form id="authForm"><div class="field"><label>নাম</label><input id="authName" placeholder="আপনার নাম"></div><div class="field"><label>ইমেইল</label><input id="authEmail" type="email" required></div><div class="field"><label>পাসওয়ার্ড</label><input id="authPassword" type="password" minlength="6" required></div><button class="btn" id="authSubmit" type="submit">লগইন</button></form><p class="muted">এটি শুধু UI ডেমো। আসল অ্যাকাউন্ট ও পাসওয়ার্ড নিরাপদ সার্ভারে সংরক্ষণের জন্য backend লাগবে।</p><button class="btn secondary" id="switchAuth" onclick="switchAuth()">নতুন অ্যাকাউন্ট খুলুন</button></div></div>
+<script>
+const $=id=>document.getElementById(id);let currentUser=JSON.parse(localStorage.getItem('shopx_user')||'null'),authMode='login';
+function showView(id){['homeView','profileView','sellView','tasksView','walletView','spinView','giftView'].forEach(x=>$(x).classList.add('hidden'));$(id).classList.remove('hidden');if(id==='tasksView')renderSubs();if(id==='profileView')renderProfile();document.querySelectorAll('.bottom button').forEach(b=>b.classList.remove('active'))}
+function toggleMenu(){showView('profileView')}function notice(){alert($('noticeText').textContent)}
+function openSell(type){if(!currentUser){auth('login');return}showView('sellView');$('serviceType').value=type}
+function auth(mode){authMode=mode;$('modalTitle').textContent=mode==='login'?'লগইন':'রেজিস্ট্রেশন';$('authName').parentElement.classList.toggle('hidden',mode==='login');$('authSubmit').textContent=mode==='login'?'লগইন':'রেজিস্টার';$('switchAuth').textContent=mode==='login'?'নতুন অ্যাকাউন্ট খুলুন':'আগে অ্যাকাউন্ট আছে? লগইন';$('modal').classList.remove('hidden')}
+function switchAuth(){auth(authMode==='login'?'register':'login')}function closeModal(){$('modal').classList.add('hidden')}
+$('authForm').addEventListener('submit',e=>{e.preventDefault();let email=$('authEmail').value.trim().toLowerCase(),password=$('authPassword').value;if(authMode==='register'){let users=JSON.parse(localStorage.getItem('shopx_users')||'{}');if(users[email])return alert('এই ইমেইল দিয়ে অ্যাকাউন্ট আছে');users[email]={name:$('authName').value.trim(),password};localStorage.setItem('shopx_users',JSON.stringify(users));currentUser={email,name:users[email].name};}else{let users=JSON.parse(localStorage.getItem('shopx_users')||'{}');if(!users[email]||users[email].password!==password)return alert('ইমেইল বা পাসওয়ার্ড সঠিক নয়');currentUser={email,name:users[email].name};}localStorage.setItem('shopx_user',JSON.stringify(currentUser));closeModal();updateUser();showView('profileView')});
+function logout(){currentUser=null;localStorage.removeItem('shopx_user');updateUser();renderProfile()}
+function updateUser(){$('welcomeName').textContent=currentUser?(currentUser.name||currentUser.email.split('@')[0]).toUpperCase():'GUEST USER';$('avatar').textContent=currentUser?(currentUser.name||'U').charAt(0).toUpperCase():'S';let bal=currentUser?(JSON.parse(localStorage.getItem('shopx_balance')||'{}')[currentUser.email]||0):0;$('balance').textContent=Number(bal).toFixed(2);$('walletBalance').textContent=Number(bal).toFixed(2)}
+function renderProfile(){$('profileInfo').textContent=currentUser?`নাম: ${currentUser.name||'—'} | ইমেইল: ${currentUser.email}`:'লগইন করলে আপনার তথ্য এখানে দেখা যাবে।';$('logoutBtn').classList.toggle('hidden',!currentUser)}
+function renderSubs(){if(!currentUser){$('mySubmissions').textContent='আবেদন দেখতে আগে লগইন করুন।';return}let all=JSON.parse(localStorage.getItem('shopx_submissions')||'[]').filter(x=>x.email===currentUser.email);$('mySubmissions').innerHTML=all.length?all.map(x=>`<div class="item"><div class="row"><b>${escapeHtml(x.type)}</b><span class="pill">${x.status}</span></div><p>প্রস্তাবিত মূল্য: ৳${x.price}</p><small>${x.date}</small></div>`).join(''):'এখনো কোনো আবেদন জমা দেননি।'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('sellForm').addEventListener('submit',e=>{e.preventDefault();if(!currentUser){auth('login');return}let arr=JSON.parse(localStorage.getItem('shopx_submissions')||'[]');arr.push({id:Date.now(),email:currentUser.email,type:$('serviceType').value,price:Number($('price').value),details:$('details').value,contact:$('contact').value,status:'Pending',date:new Date().toLocaleString('bn-BD')});localStorage.setItem('shopx_submissions',JSON.stringify(arr));e.target.reset();alert('আপনার আবেদন জমা হয়েছে।');showView('tasksView')});
+updateUser();renderProfile();setInterval(()=>{let d=new Date();$('mins').textContent=String(d.getMinutes()).padStart(2,'0');$('secs').textContent=String(d.getSeconds()).padStart(2,'0')},1000);
+</script></body></html>
